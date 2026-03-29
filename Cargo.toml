@@ -1,6 +1,6 @@
 [package]
 name = "facilguide"
-version = "0.1.1"
+version = "0.1.2"
 edition = "2021"
 authors = ["Arnaud Leroy <dropthehq@gmail.com>"]
 description = "Multilingual tech guide utilities. Guides in EN, ES, FR, PT, IT."
