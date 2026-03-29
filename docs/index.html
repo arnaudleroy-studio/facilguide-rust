@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>facilguide-rust - Rust crate for Facil.guide multilingual tech guides. Type-safe access to guides in 5 languages.</title>
+    <meta name="description" content="Rust crate for Facil.guide multilingual tech guides. Type-safe access to guides in 5 languages.">
+    <meta property="og:title" content="facilguide-rust Documentation">
+    <meta property="og:description" content="Rust crate for Facil.guide multilingual tech guides. Type-safe access to guides in 5 languages.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://arnaudleroy-studio.github.io/facilguide-rust/">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="facilguide-rust Documentation">
+    <meta name="twitter:description" content="Rust crate for Facil.guide multilingual tech guides. Type-safe access to guides in 5 languages.">
+    <link rel="canonical" href="https://arnaudleroy-studio.github.io/facilguide-rust/">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+            background: linear-gradient(135deg, #1a0a00 0%, #2d1200 50%, #1a0a00 100%);
+            color: #e0e0e0;
+            line-height: 1.7;
+            min-height: 100vh;
+        }
+        .container {
+            max-width: 820px;
+            margin: 0 auto;
+            padding: 60px 24px;
+        }
+        .header {
+            margin-bottom: 48px;
+            padding-bottom: 32px;
+            border-bottom: 1px solid rgba(255,255,255,0.08);
+        }
+        .lang-badge {
+            display: inline-block;
+            background: #F74C00;
+            color: #fff;
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            padding: 4px 12px;
+            border-radius: 4px;
+            margin-bottom: 16px;
+        }
+        h1 {
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 8px;
+            letter-spacing: -0.5px;
+        }
+        .tagline {
+            font-size: 1.1rem;
+            color: #999;
+        }
+        h2 {
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: #fff;
+            margin: 40px 0 16px;
+            padding-bottom: 8px;
+            border-bottom: 1px solid rgba(255,255,255,0.06);
+        }
+        h2 .accent {
+            color: #F74C00;
+        }
+        p {
+            margin-bottom: 16px;
+            color: #bbb;
+        }
+        a {
+            color: #10B981;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+        pre {
+            background: rgba(0,0,0,0.4);
+            border: 1px solid rgba(255,255,255,0.06);
+            border-radius: 8px;
+            padding: 20px 24px;
+            overflow-x: auto;
+            margin: 16px 0 24px;
+            font-size: 0.88rem;
+            line-height: 1.6;
+        }
+        code {
+            font-family: 'SF Mono', 'Fira Code', 'Cascadia Code', Menlo, Consolas, monospace;
+            color: #d4d4d4;
+        }
+        .kw { color: #F74C00; font-weight: 600; }
+        .str { color: #98c379; }
+        .cmt { color: #5c6370; font-style: italic; }
+        .fn { color: #61afef; }
+        .attr { color: #c678dd; }
+        .features {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 8px;
+            margin: 16px 0 24px;
+            list-style: none;
+        }
+        .features li {
+            padding: 8px 12px;
+            background: rgba(255,255,255,0.03);
+            border-radius: 6px;
+            font-size: 0.9rem;
+            color: #ccc;
+        }
+        .features li::before {
+            content: '';
+            display: inline-block;
+            width: 6px;
+            height: 6px;
+            background: #F74C00;
+            border-radius: 50%;
+            margin-right: 10px;
+            vertical-align: middle;
+        }
+        .api-method {
+            background: rgba(255,255,255,0.02);
+            border: 1px solid rgba(255,255,255,0.05);
+            border-radius: 8px;
+            padding: 16px 20px;
+            margin: 12px 0;
+        }
+        .api-method code {
+            font-size: 0.85rem;
+            color: #fff;
+        }
+        .api-method p {
+            margin: 8px 0 0;
+            font-size: 0.88rem;
+            color: #888;
+        }
+        .method-badge {
+            display: inline-block;
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            padding: 2px 8px;
+            border-radius: 3px;
+            color: #fff;
+            margin-right: 8px;
+            vertical-align: middle;
+        }
+            .method-badge.async { background: #F74C00; }
+            .method-badge.func { background: #B7410E; }
+
+        .footer {
+            margin-top: 64px;
+            padding-top: 24px;
+            border-top: 1px solid rgba(255,255,255,0.06);
+            font-size: 0.85rem;
+            color: #555;
+        }
+        .footer a {
+            color: #777;
+        }
+        .req {
+            display: inline-block;
+            background: rgba(255,255,255,0.05);
+            padding: 4px 12px;
+            border-radius: 4px;
+            font-size: 0.85rem;
+            color: #999;
+            margin-bottom: 16px;
+        }
+        @media (max-width: 600px) {
+            .container { padding: 32px 16px; }
+            h1 { font-size: 1.6rem; }
+            .features { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <span class="lang-badge">Rust</span>
+            <h1>facilguide-rust</h1>
+            <p class="tagline">Rust crate for Facil.guide multilingual tech guides. Type-safe access to guides in 5 languages.</p>
+        </header>
+
+        <section>
+            <h2>About <span class="accent">Facil.guide</span></h2>
+            <p>
+                This Rust library provides programmatic access to
+                <a href="https://facil.guide">Facil.guide</a>, a platform offering free simplified
+                technology guides designed for seniors and non-technical users. All content
+                is available in 5 languages: English, Spanish, French, Portuguese, and Italian.
+            </p>
+            <p>
+                <a href="https://facil.guide">Facil.guide</a> covers 260+ step-by-step tutorials
+                across smartphones, tablets, computers, internet basics, and popular apps.
+                No ads, no accounts required -- just clear, accessible guidance for everyday
+                technology tasks.
+            </p>
+        </section>
+
+        <section>
+            <h2><span class="accent">#</span> Installation</h2>
+            <span class="req">Rust 1.70+ (2021 edition)</span>
+            <pre><code><span class="cmt"># Add to Cargo.toml</span>
+[dependencies]
+facilguide = <span class="str">"0.1"</span>
+tokio = { version = <span class="str">"1"</span>, features = [<span class="str">"full"</span>] }
+
+<span class="cmt"># Or via cargo</span>
+cargo add facilguide</code></pre>
+        </section>
+
+        <section>
+            <h2><span class="accent">#</span> Quick Start</h2>
+            <pre><code><span class="kw">use</span> facilguide::{Client, Language};
+
+<span class="attr">#[tokio::main]</span>
+<span class="kw">async fn</span> <span class="fn">main</span>() -> Result&lt;(), Box&lt;<span class="kw">dyn</span> std::error::Error&gt;&gt; {
+    <span class="kw">let</span> client = Client::<span class="fn">default</span>();
+
+    <span class="cmt">// List guides in Portuguese</span>
+    <span class="kw">let</span> guides = client
+        .<span class="fn">list_guides</span>(Language::Pt)
+        .<span class="fn">category</span>(<span class="str">"smartphone"</span>)
+        .<span class="fn">send</span>()
+        .<span class="kw">await</span>?;
+
+    <span class="kw">for</span> guide <span class="kw">in</span> &guides {
+        <span class="fn">println!</span>(<span class="str">"[{}] {}"</span>, guide.lang, guide.title);
+    }
+
+    <span class="cmt">// Get guide with step-by-step instructions</span>
+    <span class="kw">let</span> guide = client
+        .<span class="fn">get_guide</span>(<span class="str">"send-photos"</span>, Language::It)
+        .<span class="kw">await</span>?;
+
+    <span class="kw">for</span> (i, step) <span class="kw">in</span> guide.steps.<span class="fn">iter</span>().<span class="fn">enumerate</span>() {
+        <span class="fn">println!</span>(<span class="str">"Step {}: {}"</span>, i + 1, step.title);
+    }
+    Ok(())
+}</code></pre>
+        </section>
+
+        <section>
+            <h2><span class="accent">#</span> Features</h2>
+            <ul class="features">
+                    <li>Fully async with tokio, zero-copy deserialization</li>
+                    <li>Guides in 5 languages (EN, ES, FR, PT, IT)</li>
+                    <li>Step-by-step tutorials</li>
+                    <li>Senior-friendly interface</li>
+                    <li>No ads or accounts required</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2><span class="accent">#</span> API Reference</h2>
+            
+            <div class="api-method">
+                <span class="method-badge async">ASYNC</span>
+                <code>client.list_guides(lang: Language) -> GuideQueryBuilder</code>
+                <p>Browse guides with fluent filtering by language, category, and difficulty level.</p>
+            </div>
+            <div class="api-method">
+                <span class="method-badge async">ASYNC</span>
+                <code>client.get_guide(slug: &str, lang: Language) -> Result&lt;Guide&gt;</code>
+                <p>Retrieve a complete guide with localized steps, screenshots, and troubleshooting tips.</p>
+            </div>
+            <div class="api-method">
+                <span class="method-badge async">ASYNC</span>
+                <code>client.list_categories(lang: Language) -> Result&lt;Vec&lt;Category&gt;&gt;</code>
+                <p>Get all guide categories with translated names and guide counts per language.</p>
+            </div>
+            <div class="api-method">
+                <span class="method-badge func">FN</span>
+                <code>Language::from_str(code: &str) -> Result&lt;Language&gt;</code>
+                <p>Parse a BCP-47 language code (en, es, fr, pt, it) into the Language enum.</p>
+            </div>
+        </section>
+
+        <footer class="footer">
+            <p>
+                <a href="https://github.com/arnaudleroy-studio/facilguide-rust">Source on GitHub</a>
+                &middot;
+                <a href="https://arnaudleroy-studio.github.io/">Arnaud Leroy Studio</a>
+                &middot;
+                <a href="https://facil.guide">facil.guide</a>
+            </p>
+            <p style="margin-top: 8px;">MIT License &middot; &copy; 2026 Arnaud Leroy Studio</p>
+        </footer>
+    </div>
+</body>
+</html>
