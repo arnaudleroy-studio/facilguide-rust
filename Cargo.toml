@@ -1,6 +1,6 @@
 [package]
 name = "facilguide"
-version = "0.1.0"
+version = "0.1.1"
 edition = "2021"
 authors = ["Arnaud Leroy <dropthehq@gmail.com>"]
 description = "Multilingual tech guide utilities. Guides in EN, ES, FR, PT, IT."
@@ -8,6 +8,6 @@ homepage = "https://facil.guide"
 repository = "https://github.com/arnaudleroy-studio/facilguide-rust"
 documentation = "https://facil.guide/en/"
 license = "MIT"
-keywords = ["guides", "multilingual"]
-categories = ["data-structures"]
+keywords = ["guides", "multilingual", "i18n", "translation", "localization"]
+categories = ["text-processing", "internationalization", "localization"]
 readme = "README.md"
